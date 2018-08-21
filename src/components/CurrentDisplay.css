@@ -1,0 +1,9 @@
+.remove-instrument-x{
+    font-size: 3.5rem;
+    padding-left: 20px;
+    color: red;
+}
+
+.remove-instrument-x:hover{
+    cursor: pointer;
+}

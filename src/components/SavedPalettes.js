@@ -1,7 +1,7 @@
 import React from "react";
 import './SavedPalettes.css'
 
-const SavedPalettes = ({ savedPalettes }) => (
+const SavedPalettes = ({ savedPalettes, clearSavedPalettes }) => (
   <div className="saved-palettes">
     {savedPalettes.map(savedPalette => {
       return (
@@ -15,6 +15,7 @@ const SavedPalettes = ({ savedPalettes }) => (
         </div>
       );
     })}
+    <button onClick={clearSavedPalettes}>Clear Saved Palettes</button>
   </div>
 );
 

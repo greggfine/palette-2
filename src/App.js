@@ -16,7 +16,6 @@ class App extends Component {
       instrumentInput: "",
       currentInstruments: [],
       currentGenre: "",
-      palettes: [],
       savedPalettes: []
     };
 
@@ -26,21 +25,54 @@ class App extends Component {
     this.handleInstrumentKeypress = this.handleInstrumentKeypress.bind(this);
     this.handleStartOver = this.handleStartOver.bind(this);
     this.handleSavePalette = this.handleSavePalette.bind(this);
+    this.removeInstrument = this.removeInstrument.bind(this);
+    this.handleAddGenre = this.handleAddGenre.bind(this);
+    this.handleAddInstrument = this.handleAddInstrument.bind(this);
+    this.clearSavedPalettes = this.clearSavedPalettes.bind(this);
+  }
+
+  handleAddGenre(e) {
+    if (!this.state.currentGenre) {
+      this.setState({
+        currentGenre: this.state.genreInput,
+        genreInput: ""
+      });
+    }
+  }
+
+  handleAddInstrument(e) {
+    if (this.state.instrumentInput){
+      this.setState({
+        currentInstruments: [
+          ...this.state.currentInstruments,
+          this.state.instrumentInput
+        ],
+        instrumentInput: ""
+      });
+    }
+  }
+
+  removeInstrument(e, index, arr) {
+    this.setState({
+      currentInstruments: this.state.currentInstruments.filter(inst => {
+        return inst !== arr[index];
+      })
+    });
   }
 
   handleSavePalette(e) {
-    if (this.state.currentGenre && this.state.currentInstruments.length) {
+    const { currentGenre, currentInstruments, savedPalettes } = this.state;
+    if (currentGenre && currentInstruments.length) {
       this.setState({
         genreInput: "",
+        currentGenre: "",
         instrumentInput: "",
         currentInstruments: [],
-        currentGenre: "",
-        palettes: [{ genre: "", instruments: [] }],
         savedPalettes: [
-          ...this.state.savedPalettes,
+          ...savedPalettes,
           {
-            genre: this.state.currentGenre,
-            instruments: this.state.currentInstruments
+            genre: currentGenre,
+            instruments: currentInstruments
           }
         ]
       });
@@ -53,27 +85,30 @@ class App extends Component {
     });
   }
 
-  handleInstrumentOnChange(e) {
-    this.setState({
-      instrumentInput: e.target.value
-    });
-  }
-
   handleGenreKeypress(e) {
     if (e.which === 13) {
       if (!this.state.currentGenre) {
         this.setState({
-          currentGenre: e.target.value,
+          currentGenre: this.state.genreInput,
           genreInput: ""
         });
       }
     }
   }
 
+  handleInstrumentOnChange(e) {
+    this.setState({
+      instrumentInput: e.target.value
+    });
+  }
+
   handleInstrumentKeypress(e) {
-    if (e.which === 13) {
+    if (e.which === 13 && this.state.instrumentInput) {
       this.setState({
-        currentInstruments: [...this.state.currentInstruments, e.target.value],
+        currentInstruments: [
+          ...this.state.currentInstruments,
+          this.state.instrumentInput
+        ],
         instrumentInput: ""
       });
     }
@@ -84,9 +119,28 @@ class App extends Component {
       genreInput: "",
       instrumentInput: "",
       currentInstruments: [],
-      currentGenre: "",
-      palettes: [{ genre: "", instruments: [] }]
+      currentGenre: ""
     });
+  }
+
+  clearSavedPalettes(){
+    this.setState({
+      savedPalettes: []
+    })
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("palettes", JSON.stringify(this.state.savedPalettes));
+  }
+
+  componentDidMount() {
+    const storedPalettes = localStorage.getItem("palettes");
+    const parsedPalettes = JSON.parse(storedPalettes);
+    for (let key in parsedPalettes) {
+      if (parsedPalettes.hasOwnProperty(key)) {
+        this.setState({ savedPalettes: parsedPalettes });
+      }
+    }
   }
 
   render() {
@@ -95,7 +149,6 @@ class App extends Component {
       currentInstruments,
       genreInput,
       instrumentInput,
-      palettes,
       savedPalettes,
       userInput
     } = this.state;
@@ -109,23 +162,30 @@ class App extends Component {
               handleGenreOnChange={this.handleGenreOnChange}
               handleGenreKeypress={this.handleGenreKeypress}
               genreInput={genreInput}
+              currentGenre={currentGenre}
+              handleAddGenre={this.handleAddGenre}
             />
 
             <InstrumentInput
               handleInstrumentOnChange={this.handleInstrumentOnChange}
               handleInstrumentKeypress={this.handleInstrumentKeypress}
               instrumentInput={instrumentInput}
+              handleAddInstrument={this.handleAddInstrument}
             />
             <CurrentDisplay
               currentGenre={currentGenre}
               currentInstruments={currentInstruments}
+              removeInstrument={this.removeInstrument}
             />
             <Buttons
               handleStartOver={this.handleStartOver}
               handleSavePalette={this.handleSavePalette}
             />
           </div>
-          <SavedPalettes savedPalettes={savedPalettes} />
+          <SavedPalettes
+            clearSavedPalettes={this.clearSavedPalettes}
+            savedPalettes={savedPalettes}
+          />
         </div>
       </div>
     );

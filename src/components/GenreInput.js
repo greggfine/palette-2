@@ -4,7 +4,9 @@ import './InputFields.css';
 const GenreInput = ({
   handleGenreOnChange,
   handleGenreKeypress,
-  genreInput
+  handleAddGenre,
+  genreInput,
+  currentGenre
 }) => (
   <div className="input-field">
     <input
@@ -13,7 +15,12 @@ const GenreInput = ({
       value={genreInput}
       onChange={e => handleGenreOnChange(e)}
       onKeyPress={e => handleGenreKeypress(e)}
-    />
+      disabled = {currentGenre}
+  />
+      <button
+        className="add-genre-btn"
+        onClick={(e) => handleAddGenre(e)}>Add Genre</button>
+    
   </div>
 );
 
