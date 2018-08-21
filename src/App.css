@@ -1,3 +1,7 @@
+html{
+  font-size: 10px;
+}
+
 body {
   background-color: lightpink;
 }
@@ -9,31 +13,13 @@ body {
   justify-content: space-around;
 }
 
-button{
-  max-width: 200px;
-  margin: 30px auto;
-  padding: 10px 20px;
+.form-fields{
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  padding: 50px;
+  width: 300px;
+  height: 800px;
 }
 
-h1 {
-  text-align: center;
-}
 
-input{
-  padding: 10px;
-  margin: 10px;
-}
-
-.input-field{
-    display: flex;
-    flex-direction: column;
-    flex-basis: 40%;
-     background-color: lightblue;
-}
-
-.saved-palettes{
-  background-color: lightyellow;
-    display: flex;
-    flex-direction: column;
-    flex-basis: 40%;
-}

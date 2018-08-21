@@ -1,0 +1,7 @@
+.saved-palettes{
+    background-color: lightyellow;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+    font-size: 1.8rem;
+}

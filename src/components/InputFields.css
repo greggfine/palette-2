@@ -1,0 +1,12 @@
+input{
+  padding: 10px;
+  margin: 10px;
+  font-size: 1.5rem;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+    font-size: 1.8rem;
+}
