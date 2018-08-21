@@ -1,0 +1,39 @@
+body {
+  background-color: lightpink;
+}
+
+.App {
+  display: flex;
+  margin: 100px auto;
+  padding: 15px;
+  justify-content: space-around;
+}
+
+button{
+  max-width: 200px;
+  margin: 30px auto;
+  padding: 10px 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+input{
+  padding: 10px;
+  margin: 10px;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+     background-color: lightblue;
+}
+
+.saved-palettes{
+  background-color: lightyellow;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+}
