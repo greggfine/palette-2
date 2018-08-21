@@ -16,9 +16,16 @@ class App extends Component {
   }
 
   handleSubmit(e) {
-    this.setState({
-      savedPalettes: [...this.state.savedPalettes, { genre: this.state.currentGenre, instruments: this.state.currentInstruments }],
-    })
+    if(this.state.currentGenre && this.state.currentInstruments.length){
+      this.setState({
+        genreInput: '',
+        instrumentInput: '',
+        currentInstruments: [],
+        currentGenre: '',
+        palettes: [{ genre: '', instruments: [] }],
+        savedPalettes: [...this.state.savedPalettes, { genre: this.state.currentGenre, instruments: this.state.currentInstruments }],
+      })
+    }
   }
 
 
@@ -36,10 +43,12 @@ class App extends Component {
 
   handleGenreKeypress(e) {
     if(e.which === 13){
-      this.setState({
-        currentGenre: e.target.value,
-        genreInput: ''
-      })
+      if(!this.state.currentGenre){
+        this.setState({
+          currentGenre: e.target.value,
+          genreInput: ''
+        })
+      }
     }
   }
 
@@ -83,7 +92,6 @@ class App extends Component {
             <div className="input-field">
               <input placeholder="genre" value={ this.state.genreInput } onChange={(e) => this.handleGenre(e)} onKeyPress={(e) => this.handleGenreKeypress(e)}/>
               <input placeholder="instruments" value={ this.state.instrumentInput } onChange={(e) => this.handleInstrument(e)} onKeyPress={(e) => this.handleInstrumentKeypress(e)}/>
-              <button onClick={(e) => this.handleClear(e) }>New Palette</button>
                 { mappedPalettes }
                 <h1>{ this.state.currentGenre }</h1>
                 <ul>
@@ -91,6 +99,7 @@ class App extends Component {
                     return <li>{ inst }</li>
                   }) }
                 </ul>
+                <button onClick={(e) => this.handleClear(e) }>New Palette</button>
                 <button onClick={(e) => this.handleSubmit(e) }>Save Palette</button>
               </div>
 
