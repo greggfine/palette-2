@@ -5,11 +5,11 @@ const SavedPalettes = ({ savedPalettes, clearSavedPalettes }) => (
   <div className="saved-palettes">
     {savedPalettes.map(savedPalette => {
       return (
-        <div>
+        <div key={savedPalette.genre}>
           <h1>{savedPalette.genre}</h1>
           <ul>
             {savedPalette.instruments.map(inst => {
-              return <li>{inst}</li>;
+              return <li key={ inst }>{inst}</li>;
             })}
           </ul>
         </div>

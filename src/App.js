@@ -153,41 +153,42 @@ class App extends Component {
       userInput
     } = this.state;
 
+    
     return (
-      <div>
-        <Header />
-        <div className="App">
-          <div className="form-fields">
-            <GenreInput
-              handleGenreOnChange={this.handleGenreOnChange}
-              handleGenreKeypress={this.handleGenreKeypress}
-              genreInput={genreInput}
-              currentGenre={currentGenre}
-              handleAddGenre={this.handleAddGenre}
-            />
-
-            <InstrumentInput
-              handleInstrumentOnChange={this.handleInstrumentOnChange}
-              handleInstrumentKeypress={this.handleInstrumentKeypress}
-              instrumentInput={instrumentInput}
-              handleAddInstrument={this.handleAddInstrument}
-            />
-            <CurrentDisplay
-              currentGenre={currentGenre}
-              currentInstruments={currentInstruments}
-              removeInstrument={this.removeInstrument}
-            />
-            <Buttons
-              handleStartOver={this.handleStartOver}
-              handleSavePalette={this.handleSavePalette}
+        <div>
+          <Header />
+          <div className="App">
+            <div className="form-fields">
+              <GenreInput
+                handleGenreOnChange={this.handleGenreOnChange}
+                handleGenreKeypress={this.handleGenreKeypress}
+                genreInput={genreInput}
+                currentGenre={currentGenre}
+                handleAddGenre={this.handleAddGenre}
+              />
+              <InstrumentInput
+                handleInstrumentOnChange={this.handleInstrumentOnChange}
+                handleInstrumentKeypress={this.handleInstrumentKeypress}
+                instrumentInput={instrumentInput}
+                handleAddInstrument={this.handleAddInstrument}
+              />
+              <CurrentDisplay
+                currentInstruments={currentInstruments}
+                currentGenre={currentGenre}
+                removeInstrument={this.removeInstrument}
+              />
+              <Buttons
+                handleStartOver={this.handleStartOver}
+                handleSavePalette={this.handleSavePalette}
+              />
+            </div>
+            <SavedPalettes
+              clearSavedPalettes={this.clearSavedPalettes}
+              savedPalettes={savedPalettes}
             />
           </div>
-          <SavedPalettes
-            clearSavedPalettes={this.clearSavedPalettes}
-            savedPalettes={savedPalettes}
-          />
+          
         </div>
-      </div>
     );
   }
 }

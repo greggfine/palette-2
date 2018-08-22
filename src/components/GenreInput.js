@@ -16,6 +16,7 @@ const GenreInput = ({
       onChange={e => handleGenreOnChange(e)}
       onKeyPress={e => handleGenreKeypress(e)}
       disabled = {currentGenre}
+      style={currentGenre? { backgroundColor: '#ccc' }:{ backgroundColor: '#fff' }}
   />
       <button
         className="add-genre-btn"
