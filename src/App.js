@@ -16,7 +16,8 @@ class App extends Component {
       instrumentInput: "",
       currentInstruments: [],
       currentGenre: "",
-      savedPalettes: []
+      savedPalettes: [],
+      warning: false
     };
 
     this.handleGenreOnChange = this.handleGenreOnChange.bind(this);
@@ -35,7 +36,8 @@ class App extends Component {
     if (!this.state.currentGenre) {
       this.setState({
         currentGenre: this.state.genreInput,
-        genreInput: ""
+        genreInput: "",
+        warning: false
       });
     }
   }
@@ -76,6 +78,10 @@ class App extends Component {
           }
         ]
       });
+    } else{
+      this.setState({
+        warning: true
+      })
     }
   }
 
@@ -177,6 +183,7 @@ class App extends Component {
                 currentGenre={currentGenre}
                 removeInstrument={this.removeInstrument}
               />
+              <h4 style={{ color: 'red' }} >{this.state.warning? 'please add a genre':null}</h4>
               <Buttons
                 handleStartOver={this.handleStartOver}
                 handleSavePalette={this.handleSavePalette}
