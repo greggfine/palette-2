@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import './App.css';
-import Header from './components/Header';
-import GenreInput from './components/GenreInput';
-import InstrumentInput from "./components/InstrumentInput";
-import CurrentDisplay from "./components/CurrentDisplay";
-import SavedPalettes from "./components/SavedPalettes";
-import Buttons from './components/Buttons';
+import './css/App.css';
+import GenreInput from './GenreInput';
+import InstrumentInput from './InstrumentInput';
+import CurrentDisplay from './CurrentDisplay';
+import SavedPalettes from './SavedPalettes';
+import Buttons from './Buttons';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      genreInput: "",
-      instrumentInput: "",
+      genreInput: '',
+      instrumentInput: '',
       currentInstruments: [],
-      currentGenre: "",
+      currentGenre: '',
       savedPalettes: [],
       warning: false
     };
@@ -161,23 +160,28 @@ class App extends Component {
 
     
     return (
-        <div>
-          <Header />
+    
+
           <div className="App">
-            <div className="form-fields">
-              <GenreInput
-                handleGenreOnChange={this.handleGenreOnChange}
-                handleGenreKeypress={this.handleGenreKeypress}
-                genreInput={genreInput}
-                currentGenre={currentGenre}
-                handleAddGenre={this.handleAddGenre}
-              />
-              <InstrumentInput
-                handleInstrumentOnChange={this.handleInstrumentOnChange}
-                handleInstrumentKeypress={this.handleInstrumentKeypress}
-                instrumentInput={instrumentInput}
-                handleAddInstrument={this.handleAddInstrument}
-              />
+            <h1 className="display-4 text-info text-center mb-5">INSTRUMENT PALETTES</h1>
+            <div className="mb-5 p-5">
+
+              <div className="genre-inst-inputs">
+                <GenreInput
+                  handleGenreOnChange={this.handleGenreOnChange}
+                  handleGenreKeypress={this.handleGenreKeypress}
+                  genreInput={genreInput}
+                  currentGenre={currentGenre}
+                  handleAddGenre={this.handleAddGenre}
+                />
+                <InstrumentInput
+                  handleInstrumentOnChange={this.handleInstrumentOnChange}Y
+                  handleInstrumentKeypress={this.handleInstrumentKeypress}
+                  instrumentInput={instrumentInput}
+                  handleAddInstrument={this.handleAddInstrument}
+                />
+              </div>
+
               <CurrentDisplay
                 currentInstruments={currentInstruments}
                 currentGenre={currentGenre}
@@ -195,7 +199,7 @@ class App extends Component {
             />
           </div>
           
-        </div>
+
     );
   }
 }

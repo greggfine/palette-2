@@ -1,21 +1,21 @@
 import React from 'react';
-import "./InputFields.css";
 
-const InputFields = ({
+const InstrumentInput = ({
   handleAddInstrument,
   handleInstrumentOnChange,
   handleInstrumentKeypress,
   instrumentInput
 }) => (
-  <div className="input-field">
+  <div className="mb-3 input-group">
     <input
+      className="input-group-text"
       placeholder="Add instrument"
       value={instrumentInput}
       onChange={e => handleInstrumentOnChange(e)}
       onKeyPress={e => handleInstrumentKeypress(e)}
     />
     <button
-      className="add-instrument-btn"
+      className="btn btn-success input-group-append"
       onClick={e => handleAddInstrument(e)}
     >
       Add Instrument
@@ -23,4 +23,4 @@ const InputFields = ({
   </div>
 );
 
-export default InputFields;
+export default InstrumentInput;

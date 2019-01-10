@@ -1,20 +1,21 @@
 import React from 'react';
-import './CurrentDisplay.css';
 
 const CurrentDisplay = ({
   currentGenre,
   currentInstruments,
   removeInstrument
 }) => (
-  <div className="input-field">
-    <h1>{currentGenre}</h1>
+  <div className="text-center mb-5">
+    <h1 className="text-primary">{currentGenre}</h1>
     <ul>
       {currentInstruments.map((inst, index, arr) => {
         return (
-          <li key={inst}>
+          <li 
+            className='list-unstyled lead'
+            key={inst}>
             {inst}
             <span
-                className="remove-instrument-x" 
+              className="badge badge-danger ml-3 remove-instrument-x"
                 onClick={(e)=> removeInstrument(e, index, arr)}> x </span>
           </li>
         );

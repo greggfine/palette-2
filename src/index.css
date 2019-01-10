@@ -1,7 +1,5 @@
-body {
+/* body {
   margin: 0; 
-  font-family: sans-serif;
-  font-size: 10px;
   box-sizing: border-box;
 }
 
@@ -13,7 +11,6 @@ nav{
 }
 
 nav #nav-ul{
-  /* border: 5px solid red; */
   margin: 0;
   display: flex;
   justify-content: flex-end;
@@ -38,4 +35,4 @@ nav .link-li:hover{
 
 .link {
   text-decoration: none;
-}
+} */

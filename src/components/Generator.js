@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Generator.css';
 import instList from '../InstrumentList';
 
 const instListNames = instList.map((inst) => {
@@ -37,7 +36,7 @@ class Generator extends Component {
     return Math.floor(Math.random() * arr.length);
   }
 
-    generateFourRandNums(arr, numInstruments) {
+  generateFourRandNums(arr, numInstruments) {
     const result = [];
     let randNum;
 
@@ -72,19 +71,25 @@ class Generator extends Component {
     });
     return (
       <div className="generator">
-        <h1>This is a Generator</h1>
-        <input
-          type="text"
-          placeholder="How many instruments?"
-          onChange={e => this.handleChange(e)}
-          onKeyPress={e => this.handleKeyPress(e)}
-          value={this.state.userInput}
-        />
-        <span><h1>{ numInstruments }</h1></span>
-        <button onClick={() => this.generatePermutatedArr(instListNames, numInstruments)}>
-          Generate Random List
-        </button>
-        <ul>{mappedInstruments}</ul>
+        <h1 className="text-info text-center display-4 mb-5">Generator</h1>
+        <div className="text-center">
+          <input
+            className="mb-5 mr-3"
+            style={{margin: 'auto', width: '200px'}}
+            type="text"
+            placeholder="How many instruments?"
+            onChange={e => this.handleChange(e)}
+            onKeyPress={e => this.handleKeyPress(e)}
+            value={this.state.userInput}
+          />
+          <span className="badge badge-dark text-white p-2 mb-5">{ numInstruments }</span>
+          <button 
+              className="btn btn-success d-block mx-auto mb-5"
+              onClick={() => this.generatePermutatedArr(instListNames, numInstruments)}>
+            Generate Random List
+          </button>
+          <ul className="list-unstyled lead">{mappedInstruments}</ul>
+        </div>
       </div>
     );
   }
