@@ -8,7 +8,7 @@ const InstrumentInput = ({
 }) => (
   <div className="mb-3 input-group">
     <input
-      className="input-group-text"
+      className="input-group-text text-left"
       placeholder="Add instrument"
       value={instrumentInput}
       onChange={e => handleInstrumentOnChange(e)}

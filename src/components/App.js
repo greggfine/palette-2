@@ -35,7 +35,7 @@ class App extends Component {
     if (!this.state.currentGenre) {
       this.setState({
         currentGenre: this.state.genreInput,
-        genreInput: "",
+        genreInput: '',
         warning: false
       });
     }
@@ -65,9 +65,9 @@ class App extends Component {
     const { currentGenre, currentInstruments, savedPalettes } = this.state;
     if (currentGenre && currentInstruments.length) {
       this.setState({
-        genreInput: "",
-        currentGenre: "",
-        instrumentInput: "",
+        genreInput: '',
+        currentGenre: '',
+        instrumentInput: '',
         currentInstruments: [],
         savedPalettes: [
           ...savedPalettes,
@@ -95,7 +95,7 @@ class App extends Component {
       if (!this.state.currentGenre) {
         this.setState({
           currentGenre: this.state.genreInput,
-          genreInput: ""
+          genreInput: ''
         });
       }
     }
@@ -163,7 +163,7 @@ class App extends Component {
     
 
           <div className="App">
-            <h1 className="display-4 text-info text-center mb-5">INSTRUMENT PALETTES</h1>
+            <h1 className="display-4 shadow-sm pb-3 text-info text-center mb-5">INSTRUMENT PALETTES</h1>
             <div className="mb-5 p-5">
 
               <div className="genre-inst-inputs">

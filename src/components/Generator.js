@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import instList from '../InstrumentList';
 
 const instListNames = instList.map((inst) => {
+  // return inst
   return inst.name
 })
 
@@ -23,14 +24,7 @@ class Generator extends Component {
     });
   }
 
-  handleKeyPress(e){
-    if(e.which === 13){
-        this.setState({
-            numInstruments: this.state.userInput,
-            userInput: ''
-        })
-    }
-  }
+
 
   generateRandNum(arr) {
     return Math.floor(Math.random() * arr.length);
@@ -47,6 +41,15 @@ class Generator extends Component {
       }
     }
     return result;
+  }
+
+  handleKeyPress(event) {
+    if (event.which === 13) {
+      this.setState({
+        numInstruments: this.state.userInput,
+        userInput: ''
+      })
+    }
   }
 
   generatePermutatedArr(arr, numInstruments) {
@@ -67,28 +70,28 @@ class Generator extends Component {
   render() {
     const { instruments, numInstruments } = this.state;
     const mappedInstruments = instruments.map(instrument => {
-      return <li key={instrument}>{instrument}</li>;
+      return <li className="list-group-item" key={instrument}>{instrument}</li>;
     });
     return (
-      <div className="generator">
-        <h1 className="text-info text-center display-4 mb-5">Generator</h1>
+      <div className='generator'>
+        <h1 className="shadow-sm pb-3 text-info text-center display-4 mb-5">Generator</h1>
         <div className="text-center">
           <input
-            className="mb-5 mr-3"
+            className='mb-5 mr-3 p-2'
             style={{margin: 'auto', width: '200px'}}
-            type="text"
-            placeholder="How many instruments?"
-            onChange={e => this.handleChange(e)}
-            onKeyPress={e => this.handleKeyPress(e)}
+            type='text'
+            placeholder='How many instruments?'
+            onChange={event => this.handleChange(event)}
+            onKeyPress={event => this.handleKeyPress(event)}
             value={this.state.userInput}
           />
-          <span className="badge badge-dark text-white p-2 mb-5">{ numInstruments }</span>
+          <span className='badge badge-dark text-white p-2 mb-5'>{ numInstruments }</span>
           <button 
-              className="btn btn-success d-block mx-auto mb-5"
+              className='btn btn-success d-block mx-auto mb-5'
               onClick={() => this.generatePermutatedArr(instListNames, numInstruments)}>
             Generate Random List
           </button>
-          <ul className="list-unstyled lead">{mappedInstruments}</ul>
+          <ul className='list-group lead'>{mappedInstruments}</ul>
         </div>
       </div>
     );
