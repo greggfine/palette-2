@@ -1,0 +1,32 @@
+ {
+      "name": "violin",
+      "alternate name/aliases": "fiddle",
+      "id": 1234,
+      "type": "string",
+      "ensemble type": "string",
+      "ethnicity": "polish",
+      "wikipedia link": "http://"
+      "img": "images[Math.floor(Math.random() * images.length)]"
+}
+
+// How do I want to search/generate palettes?
+// Give me a random palette of 5 instruments
+// Give me a 5 instrument string ensemble
+// Give me a 5 instrument Polish ensemble
+
+// MOOD? Instruments that are sad???
+
+// Give me an example of where this ensemble was used:
+//          i.e., "Danny Elfman: Edward Scissorhands"
+
+
+// Give me the sample libraries/virtual instruments where
+//   I can find these instruments
+
+// Give me a sound example of this instrument combination
+//                (can be a youtube link) 
+
+// Standard Palettes:
+//    Give me the typical Latin Salsa instrumentation
+//    Give me the typical Jazz Quartet instrumentation
+
