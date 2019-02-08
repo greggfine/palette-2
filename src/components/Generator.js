@@ -3,7 +3,7 @@ import instList from '../InstrumentList';
 
 const instListNames = instList.map((inst) => {
   // return inst
-  return inst.name
+  return inst
 })
 
 class Generator extends Component {
@@ -70,7 +70,14 @@ class Generator extends Component {
   render() {
     const { instruments, numInstruments } = this.state;
     const mappedInstruments = instruments.map(instrument => {
-      return <li className="list-group-item" key={instrument}>{instrument}</li>;
+      return (
+        <div>
+          <li className="list-group-item" key={instrument}>
+            {instrument.name}
+            <img src={instrument.img} alt="" style={{ width: '50px'}}/>
+          </li>
+        </div>
+      )
     });
     return (
       <div className='generator'>
